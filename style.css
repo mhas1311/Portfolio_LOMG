@@ -1,0 +1,207 @@
+/* Tema claro como padrão (variáveis) */
+:root{
+  --bg: linear-gradient(180deg,#ffffff 0%, #f3f4f6 100%);
+  --card: #ffffff;
+  --text: #0f1720;
+  --muted: #6b7280;
+  --accent: #3ecf8e;
+  --glass: rgba(2,6,23,0.03);
+  --overlay: rgba(2,6,23,0.06);
+  --border: rgba(2,6,23,0.08);
+}
+
+/* Tema escuro ativado via body.dark-theme */
+body.dark-theme {
+  --bg: linear-gradient(180deg,#0b0f12 0%, #0f1720 100%);
+  --card: #111318;
+  --text: #ffffff;
+  --muted: #9aa3a8;
+  --accent: #3ecf8e;
+  --glass: rgba(255,255,255,0.03);
+  --overlay: rgba(2,6,23,0.6);
+  --border: rgba(255,255,255,0.06);
+}
+
+/* aplicar variáveis ao layout */
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Inter,system-ui,Segoe UI,Roboto,Arial;
+  color:var(--text);
+  background:var(--bg);
+  transition: background 250ms ease, color 250ms ease;
+}
+
+.container{max-width:1100px;margin:0 auto;padding:28px}
+header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;gap:12px;align-items:center}
+.brand h1{font-size:20px;margin:0}
+nav a{color:var(--muted);text-decoration:none;margin-left:14px}
+nav a.active{color:var(--accent);font-weight:600}
+
+/* HERO */
+.hero{display:grid;grid-template-columns:1fr;gap:18px;align-items:center;padding:28px;background:linear-gradient(90deg, rgba(62,207,142,0.06), transparent);border-radius:12px;margin-top:18px}
+.hero h2{margin:0;font-size:28px}
+.hero p{color:var(--muted);margin:8px 0 0}
+
+/* Sections */
+section{margin-top:28px}
+h3{margin:0 0 12px 0;font-size:20px}
+
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.card{
+  background:var(--card);
+  padding:16px;
+  border-radius:10px;
+  /* sombra mais neutra para funcionar em ambos os temas */
+  box-shadow: 0 6px 18px rgba(2,6,23,0.06);
+}
+.project-card h4{margin:0 0 8px}
+.techs{color:var(--muted);font-size:13px;margin-top:8px}
+.btn{display:inline-block;padding:8px 12px;border-radius:8px;text-decoration:none;background:var(--accent);color:#021014;font-weight:600}
+
+/* Team */
+.member{display:flex;gap:12px;align-items:center}
+.member img{width:72px;height:72px;border-radius:8px;object-fit:cover}
+.socials a{display:inline-block;margin-right:8px;color:var(--muted);text-decoration:none}
+
+/* Project modal */
+.modal{
+  position:fixed;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  /* overlay agora segue o tema */
+  background: var(--overlay);
+  padding:24px;
+}
+.modal .dialog{
+  max-width:880px;
+  width:100%;
+  /* dialog usa cor do card e texto segue a variável de tema */
+  background: var(--card);
+  color: var(--text);
+  padding:18px;
+  border-radius:12px;
+}
+.modal.show{display:flex}
+
+/* Contact form */
+form input, form textarea{
+  width:100%;
+  padding:10px;
+  border-radius:8px;
+  /* borda e fundo seguem variáveis do tema */
+  border:1px solid var(--border);
+  background:var(--glass);
+  color:var(--text);
+  margin-top:8px;
+}
+form label{font-size:14px;color:var(--muted)}
+.small{font-size:13px;color:var(--muted)}
+
+/* filtros: escondido por padrão; .show exibe como linha flex */
+#filters { display: none; gap:12px; flex-wrap:wrap; margin-bottom:12px; align-items:center; }
+#filters.show { display: flex; }
+
+/* cada grupo de filtros em linha */
+.filter-group { display: flex; gap:8px; align-items:center; margin-right:12px; }
+
+/* melhora visual do label/checkbox inline */
+.filter-group label { display: inline-flex; align-items: center; gap:6px; cursor: pointer; color:var(--muted); font-size:14px; }
+
+/* botão de limpar dentro do painel */
+#filters .btn { margin-left: 8px; }
+
+/* Responsive */
+@media (max-width:900px){.grid-3{grid-template-columns:repeat(2,1fr)}.hero h2{font-size:24px}}
+@media (max-width:600px){header{flex-direction:column;align-items:flex-start}.grid-3{grid-template-columns:1fr}.grid-2{grid-template-columns:1fr}.hero{padding:18px}.brand h1{font-size:18px}}
+
+/* Comments */
+.comments-list .comment { background: rgba(255,255,255,0.02); padding:8px; border-radius:8px; }
+.comment .small, .comment button.small { color:var(--muted); background:transparent; border:0; cursor:pointer; }
+.comment .meta { color: var(--muted); font-size:13px; }
+.comment .body { margin-top:6px; }
+/* admin small tweaks */
+#adminArea .card { margin-bottom:10px; }
+
+footer{margin:28px 0 80px;color:var(--muted);font-size:13px;text-align:center}
+
+/* Botão voltar ao topo */
+.back-to-top{
+  position: fixed;
+  right: 20px;
+  bottom: 22px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: var(--primary, #3ecf8e); /* usa cor principal da página se existir */
+  color: var(--on-primary, #ffffff);
+  box-shadow: 0 8px 20px rgba(11,108,255,0.12);
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 180ms ease, transform 180ms ease;
+  z-index: 9999;
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* visível */
+.back-to-top.visible{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* acessibilidade e foco */
+.back-to-top:focus{
+  outline: 2px solid color-mix(in srgb, var(--primary, #3ecf8e) 40%, white);
+  outline-offset: 3px;
+}
+
+/* hover */
+.back-to-top:hover{
+  filter: brightness(0.95);
+}
+
+/* respeitar redução de movimento */
+@media (prefers-reduced-motion: reduce){
+  .back-to-top { transition: none; }
+}
+
+/* theme toggle: canto superior direito */
+.theme-toggle{
+  position:fixed;
+  top:20px;
+  right:20px;
+  z-index:10000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:48px;
+  height:48px;
+  border-radius:12px;
+  background:var(--card);
+  color:var(--text);
+  border:1px solid var(--border);
+  box-shadow: 0 8px 24px rgba(2,6,23,0.08);
+  cursor:pointer;
+  font-size:20px;
+  transition:background 180ms ease, transform 120ms ease;
+}
+
+/* hover / focus estados */
+.theme-toggle:hover{ transform: scale(1.03); }
+.theme-toggle:focus{ outline: 2px solid color-mix(in srgb, var(--accent) 55%, white); outline-offset:4px; }
+
+/* proteger sobreposição em larguras pequenas */
+@media (max-width:420px){
+  .theme-toggle{ top:16px; right:16px; }
+}
+

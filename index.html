@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfólio da Equipe LOMG</title>
+
+  <!-- link externo para CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <img src="/media/LogoLOMG__1_.png" alt="Logo" style="width:48px;height:48px;border-radius:8px;object-fit:cover">
+        <h1>Equipe LOMG</h1>
+      </div>
+      <nav>
+        <a href="#home" class="active">Página Principal</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#equipe">Equipe</a>
+        <a href="#contato">Contato</a>
+        <button id="themeToggle" class="theme-toggle" aria-label="Alternar tema">🌃</button>
+      </nav>
+    </header>
+
+    <main id="home">
+      <section class="hero">
+        <div>
+          <h2>LOMG</h2>
+          <p>O trabalho objetiva desenvolver um site portfólio moderno e interativo que reúna os principais projetos, atividades e competências adquiridas pela equipe ao longo do curso de Engenharia da Computação, sendo importante porque consolida os aprendizados teóricos e práticos obtidos ao longo do curso, permitindo aplicar na prática conceitos de desenvolvimento web, versionamento de código e design de interface.</p>
+        </div>
+        <div style="display:flex;gap:10px;align-items:center">
+          <img src="/media/fotoExemploGrupo4.avif" alt="foto grupo" style="width:160px;height:100px;object-fit:cover;border-radius:8px">
+          <div style="color:var(--muted)">⏳Em breve foto da Equipe LOMG</div>
+        </div>
+      </section>
+
+      <!-- Projetos -->
+      <section id="projetos">
+        <div class="section-head" style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+          <h3>Projetos</h3>
+          <button id="toggleFilters" type="button" class="btn" aria-expanded="false">Filtrar</button>
+        </div>
+
+        <!-- filtros (escondido por padrão; JS alterna a classe .show) -->
+        <div id="filters" class="card" aria-hidden="true">
+          <!-- JS vai popular filtros aqui: .filter-group -->
+        </div>
+
+        <div class="grid-3" id="projetosContainer">
+          <!-- Projetos serão gerados dinamicamente por script.js -->
+        </div>
+      </section>
+
+      <!-- Team -->
+      <section id="equipe">
+        <h3>Equipe</h3>
+        <div class="grid-2" id="equipeContainer">
+          <!-- Membros serão gerados dinamicamente por script.js a partir do array `equipe` -->
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contato">
+        <h3>Contato</h3>
+        <div class="card">
+          <form id="contactForm" novalidate>
+            <label for="nome">Nome<span style="color:#ff6b6b">*</span></label>
+            <input id="nome" name="nome" type="text" required placeholder="Seu nome">
+
+            <label for="email">Email<span style="color:#ff6b6b">*</span></label>
+            <input id="email" name="email" type="email" required placeholder="seu@exemplo.com">
+
+            <label for="mensagem">Mensagem<span style="color:#ff6b6b">*</span></label>
+            <textarea id="mensagem" name="mensagem" rows="5" required placeholder="Escreva sua mensagem para a Equipe LOMG"></textarea>
+
+            <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
+              <button type="submit" class="btn">Enviar mensagem</button>
+              <div id="status" class="small" aria-live="polite"></div>
+            </div>
+            <p class="small" style="margin-top:10px"></p>
+          </form>
+        </div>
+      </section>
+
+    </main>
+
+    <footer></footer>
+  </div>
+
+  <!-- Modal para detalhes do projeto -->
+  <div id="modal" class="modal" role="dialog" aria-modal="true">
+    <div class="dialog">
+      <button id="closeModal" style="float:right;background:transparent;border:0;color:var(--muted);font-size:18px">✕</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- Botão voltar ao topo -->
+  <button id="backToTop" class="back-to-top" aria-label="Voltar ao topo" title="Voltar ao topo">▲</button>
+
+  <!-- dados compartilhados -->
+  <script src="data.js"></script>
+  <!-- script externo -->
+  <script src="script.js"></script>
+
+  <script>
+    // Comportamento do botão "voltar ao topo"
+    (function(){
+      const btn = document.getElementById('backToTop');
+      if(!btn) return;
+      const showAfter = 250; // px
+      const setVisible = () => {
+        if (window.scrollY > showAfter) {
+          btn.classList.add('visible');
+          btn.setAttribute('aria-hidden','false');
+        } else {
+          btn.classList.remove('visible');
+          btn.setAttribute('aria-hidden','true');
+        }
+      };
+      window.addEventListener('scroll', setVisible, {passive:true});
+      // clique / teclado
+      btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+      btn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); }
+      });
+      // estado inicial
+      setVisible();
+    })();
+  </script>
+</body>
+</html>
