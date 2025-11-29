@@ -37,6 +37,7 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .brand{display:flex;gap:12px;align-items:center}
 .brand h1{font-size:20px;margin:0}
 nav a{color:var(--muted);text-decoration:none;margin-left:14px}
+nav a:hover{color:var(--accent);transition:color 180ms ease;}
 nav a.active{color:var(--accent);font-weight:600}
 
 /* HERO */
