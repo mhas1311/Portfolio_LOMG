@@ -350,10 +350,29 @@ document.addEventListener('DOMContentLoaded', () => {
       const brief = document.createElement('p');
       brief.textContent = p.desc;
 
+      // participantes
+      const members = (Array.isArray(p.memberIds) ? p.memberIds.map(mid => {
+        const m = equipe.find(x => Number(x.id) === mid);
+        return m ? m.nome : null;
+      }).filter(x => x) : []);
+      const memTitle = document.createElement('p');
+      memTitle.className = 'medium';
+      memTitle.innerHTML = '<strong>Participantes:</strong> ' + (members.length ? members.join(', ') : 'N/A');
+
+      // categoria
+      const catTitle = document.createElement('p');
+      catTitle.className = 'small';
+      catTitle.innerHTML = '<strong>Categoria:</strong> ' + (p.category || 'N/A');
+
       // tecnologias
       const techTitle = document.createElement('p');
       techTitle.className = 'small';
       techTitle.innerHTML = '<strong>Tecnologias:</strong> ' + (Array.isArray(p.techs) ? p.techs.join(', ') : p.techs || '');
+
+      // ano
+      const yearTitle = document.createElement('p');
+      yearTitle.className = 'small';
+      yearTitle.innerHTML = '<strong>Ano:</strong> ' + (p.year || 'N/A');
 
       // abrir repositório
       const repoWrap = document.createElement('p');
@@ -366,7 +385,7 @@ document.addEventListener('DOMContentLoaded', () => {
       repoLink.rel = 'noopener noreferrer';
       repoWrap.appendChild(repoLink);
 
-      content.append(title, brief, techTitle, repoWrap);
+      content.append(title, memTitle, brief, catTitle, techTitle, yearTitle, repoWrap);
       document.getElementById('modal').classList.add('show');
     });
 

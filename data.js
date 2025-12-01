@@ -21,7 +21,7 @@ window.projects = {
   3: {
     title: 'Studio Essencial',
     desc: 'Projeto de desenvolvimento de um sistema de salão de beleza completo, com funcionalidades para agendamento de serviços, gerenciamento de clientes e controle de estoque.',
-    techs: ['Java', 'Dockerfile'],
+    techs: ['Java','Spring Boot','MySQL','TypeScript','CSS','HTML','Angular','Dockerfile'],
     repo: 'https://github.com/Gustaalexandre/StudioEssecial-api',
     category: 'Sistema',
     year: 2024,
