@@ -418,16 +418,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Smooth scroll for nav
-    document.querySelectorAll('nav a').forEach(a=>{
-      a.addEventListener('click', (e)=>{
-        e.preventDefault();
-        const id = a.getAttribute('href').replace('#','');
-        const el = document.getElementById(id);
-        if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
-        document.querySelectorAll('nav a').forEach(x=>x.classList.remove('active'));
-        a.classList.add('active');
-      })
-    });
+    // document.querySelectorAll('nav a').forEach(a=>{
+    //   a.addEventListener('click', (e)=>{
+    //     e.preventDefault();
+    //     const id = a.getAttribute('href').replace('#','');
+    //     const el = document.getElementById(id);
+    //     if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+    //     document.querySelectorAll('nav a').forEach(x=>x.classList.remove('active'));
+    //     a.classList.add('active');
+    //   })
+    // });
 
     // Gerenciar tema claro/escuro
     (function() {
