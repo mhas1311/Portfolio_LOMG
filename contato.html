@@ -1,0 +1,90 @@
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato LOMG</title>
+
+    <!-- link externo para CSS -->
+  <link rel="stylesheet" href="style.css">
+  <!-- ícones de favicons -->
+  <link rel="icon" href="/media/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/media/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/media/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/media/favicon-16x16.png">
+  <link rel="manifest" href="/media/site.webmanifest">
+</head>
+<body>
+    <div class="container">
+
+        <header>
+      <div class="brand">
+        <img src="/media/LogoLOMG__1_.png" alt="Logo" style="width:48px;height:48px;border-radius:8px;object-fit:cover">
+        <h1>Equipe LOMG</h1>
+      </div>
+      <nav>
+        <a href="index.html">Página Principal</a>
+        <a href="projetos.html">Projetos</a>
+        <a href="equipe.html">Equipe</a>
+        <a href="#home" class="active">Contato</a>
+        <button id="themeToggle" class="theme-toggle" aria-label="Alternar tema">Tema</button>
+      </nav>
+    </header>
+
+        <section id="contato">
+        <h3>Contato</h3>
+        <div class="card">
+          <form id="contactForm" novalidate>
+            <label for="nome">Nome<span style="color:#ff6b6b">*</span></label>
+            <input id="nome" name="nome" type="text" required placeholder="Seu nome">
+
+            <label for="email">Email<span style="color:#ff6b6b">*</span></label>
+            <input id="email" name="email" type="email" required placeholder="seu@exemplo.com">
+
+            <label for="mensagem">Mensagem<span style="color:#ff6b6b">*</span></label>
+            <textarea id="mensagem" name="mensagem" rows="5" required placeholder="Escreva sua mensagem para a Equipe LOMG"></textarea>
+
+            <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
+              <button type="submit" class="btn">Enviar mensagem</button>
+              <div id="status" class="small" aria-live="polite"></div>
+            </div>
+            <p class="small" style="margin-top:10px"></p>
+          </form>
+        </div>
+      </section>
+    </div>
+
+    <!-- Botão voltar ao topo -->
+  <button id="backToTop" class="back-to-top" aria-label="Voltar ao topo" title="Voltar ao topo">▲</button>
+
+  <!-- dados compartilhados --> 
+  <script src="data.js"></script>
+  <!-- script externo -->
+  <script src="script.js"></script>
+
+  <script>
+    // Comportamento do botão "voltar ao topo"
+    (function(){
+      const btn = document.getElementById('backToTop');
+      if(!btn) return;
+      const showAfter = 250; // px
+      const setVisible = () => {
+        if (window.scrollY > showAfter) {
+          btn.classList.add('visible');
+          btn.setAttribute('aria-hidden','false');
+        } else {
+          btn.classList.remove('visible');
+          btn.setAttribute('aria-hidden','true');
+        }
+      };
+      window.addEventListener('scroll', setVisible, {passive:true});
+      // clique / teclado
+      btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+      btn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); }
+      });
+      // estado inicial
+      setVisible();
+    })();
+  </script>
+</body>
+</html>

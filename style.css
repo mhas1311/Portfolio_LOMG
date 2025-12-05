@@ -33,7 +33,7 @@ body{
 }
 
 .container{max-width:1100px;margin:0 auto;padding:28px}
-header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+header{position: top;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .brand{display:flex;gap:12px;align-items:center}
 .brand h1{font-size:20px;margin:0}
 nav a{color:var(--muted);text-decoration:none;margin-left:14px}
